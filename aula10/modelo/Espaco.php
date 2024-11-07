@@ -4,6 +4,10 @@ class espaco {
     protected string $nome;
     protected string $endereco;
 
+    public function getDadosEspaco(){
+        
+    }
+
     /**
      * Get the value of nome
      */
