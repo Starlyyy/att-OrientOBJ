@@ -1,5 +1,4 @@
 <?php 
-
 require_once('modelo/Hotel.php');
 require_once('modelo/PontoTuristico.php');
 require_once('modelo/Restaurante.php');
@@ -27,7 +26,24 @@ do {
 
             if ($op == 1) {
                 $espaco = new Hotel();
-                $espaco->setNome(readline('Nome do Hotel: '))->setEndereco(readline('Endereço do Hotel: '))->setNumEstrelas((int)readline('Número de estrelas: '));
+                $espaco->setNome(readline('Nome do Hotel: '))->setEndereco(readline('Endereço do Hotel: '));
+                $espaco->setNumEstrelas((int)readline('Número de estrelas: '));
+
+                do {
+
+                    echo "Ahh danadinho.. Isso não existe! O máximo é 5!\nVamos tentarnovamente..\n";
+                    $espaco->setNumEstrelas((int)readline('Número de estrelas: '));
+
+                } while ($espaco->getNumEstrelas() > 5);
+                
+                echo "O café é incluso?\n1-Sim\n2-Não\n\n";
+                $cafe = (bool)readline();
+
+                if ($cafe == 1) {
+                    $espaco->setCafeIncluso(true);
+                } else if ($cafe == 2){
+                    $espaco->setCafeIncluso(false);
+                }
 
             } elseif ($op == 2) {
                 $espaco = new Restaurante();
